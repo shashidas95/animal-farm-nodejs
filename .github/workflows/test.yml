@@ -30,4 +30,5 @@ jobs:
 
       - name: Merge feature into master 
         run: |
+          git push origin feat-newanimal
           git merge --no-ff origin/feat-newanimal

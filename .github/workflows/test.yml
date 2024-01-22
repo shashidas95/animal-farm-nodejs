@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - feat-newanimal
   pull_request:
     branches:
       - main
@@ -20,4 +21,13 @@ jobs:
       run: yarn 
     - name: Run Tests
       run: yarn test
-    
+  merge:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Merge feature into master 
+        run: |
+          git merge --no-ff origin/feat-newanimal
